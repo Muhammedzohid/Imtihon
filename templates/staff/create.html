@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+                
+    <!-- Content Wrapper START -->
+    <div class="main-content">
+        <div class="page-header">
+            <h2 class="header-title">SHOP</h2>
+            <div class="header-sub-title">
+                <nav class="breadcrumb breadcrumb-dash">
+                    <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Dashboard</a>
+                    <a class="breadcrumb-item" href="#">Xodim</a>
+                    <span class="breadcrumb-item active">Yaratish</span>
+                </nav>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4>Xodim yaratish</h4>
+                <div class="m-t-25" style="max-width: 700px">
+                    <form method="post">{% csrf_token %}
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Ism</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputPassword3" placeholder="..." name="name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Familiyasi</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputPassword3" placeholder="..." name="last_name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Telefon Raqami</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputPassword3" placeholder="..." name="phone_number">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Department</label>
+                            <div class="col-sm-10">
+                                <select name="department_id" class="form-control">
+                                    {% for d in department %}
+                                    <option value="{{d.id}}">{{d.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Profil rasmi</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" id="inputPassword3" name="profile_image" multiple>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Email adress</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputPassword3" placeholder="..." name="email">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Yashash joyi</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputPassword3" placeholder="..." name="adress">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Saqlash</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content Wrapper END -->
+
+
+{% endblock %}
