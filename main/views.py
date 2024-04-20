@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
-from main.funcs import staff_required
 from . import models
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -20,14 +19,14 @@ def home(request):
 
 # ---------STAFF-------------
 
-# @staff_required
+# 
 # def staff_list(request):
 #     staff = models.Staff.objects.all()
 #     context = {'staff':staff}
 #     return render(request, 'staff/list.html', context)
 
 
-@staff_required
+
 def staff_create(request):
     department = models.Department.objects.all()
     print(request.POST)
@@ -44,7 +43,7 @@ def staff_create(request):
     context = {'department':department}
     return render(request, 'staff/create.html',context)
 
-@staff_required
+
 def staff_update(request, id):
     staff = models.Staff.objects.get(id=id)
     department = models.Department.objects.all()
@@ -65,7 +64,7 @@ def staff_update(request, id):
     }
     return render(request, 'staff/update.html', context)
 
-@staff_required
+
 def staff_delete(request, id):
     queryset = models.Staff.objects.get(id=id)
     queryset.delete()
